@@ -1,2 +1,118 @@
 @import "tailwindcss";
 
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url("./assets/fonts/public-sans-v21-latin-regular.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("./assets/fonts/public-sans-v21-latin-regular.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url("./assets/fonts/public-sans-v21-latin-700.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("./assets/fonts/public-sans-v21-latin-700.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+@theme {
+  /* ── Beige ── */
+  --color-beige-500: #98908b;
+  --color-beige-100: #f8f4f0;
+
+  /* ── Grey ── */
+  --color-grey-900: #201f24;
+  --color-grey-500: #696868;
+  --color-grey-300: #b3b3b3;
+  --color-grey-100: #f2f2f2;
+
+  /* ── White ── */
+  --color-white: #ffffff;
+
+  /* ── Secondary ── */
+  --color-green: #277c78;
+  --color-yellow: #f2cdac;
+  --color-cyan: #82c9d7;
+  --color-navy: #626070;
+  --color-red: #c94736;
+  --color-purple: #826cb0;
+
+  /* ── Other ── */
+  --color-purple-light: #af81ba;
+  --color-turquoise: #597c7c;
+  --color-brown: #93674f;
+  --color-magenta: #934f6f;
+  --color-blue: #3f82b2;
+  --color-navy-grey: #97a0ac;
+  --color-army-green: #7f9161;
+  --color-gold: #cab361;
+  --color-orange: #be6c49;
+
+  /* ── Typography ── */
+  --font-sans: "Public Sans", sans-serif;
+
+  /* Modify text-3xl */
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 1.2;
+
+  /* Correct line heights only */
+  --text-xl--line-height: 1.2; /* 20px */
+  --text-sm--line-height: 1.5; /* 14px */
+  --text-xs--line-height: 1.5; /* 12px */
+
+  /* ── Spacing ── */
+  --spacing-50: 0.25rem; /* 4px  */
+  --spacing-100: 0.5rem; /* 8px  */
+  --spacing-150: 0.75rem; /* 12px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-250: 1.25rem; /* 20px */
+  --spacing-300: 1.5rem; /* 24px */
+  --spacing-400: 2rem; /* 32px */
+  --spacing-500: 2.5rem; /* 40px */
+}
+
+@layer utilities {
+  /* 32px Bold 120% */
+  .text-preset-1 {
+    @apply text-3xl font-bold;
+  }
+
+  /* 20px Bold 120% */
+  .text-preset-2 {
+    @apply text-xl font-bold;
+  }
+
+  /* 16px Bold 150% */
+  .text-preset-3 {
+    @apply text-base font-bold;
+  }
+
+  /* 14px Regular 150% */
+  .text-preset-4 {
+    @apply text-sm font-normal;
+  }
+
+  /* 14px Bold 150% */
+  .text-preset-4-bold {
+    @apply text-sm font-bold;
+  }
+
+  /* 12px Regular 150% */
+  .text-preset-5 {
+    @apply text-xs font-normal;
+  }
+
+  /* 12px Bold 150% */
+  .text-preset-5-bold {
+    @apply text-xs font-bold;
+  }
+}
+
+/* Breakpoint: md: tablets, xl: desktop */
