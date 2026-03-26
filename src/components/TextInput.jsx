@@ -1,4 +1,4 @@
-const TextInput = ({ id, labelTitle, children, ...props }) => {
+const TextInput = ({ id, labelTitle, children, isValid, ...props }) => {
   return (
     <>
       <label className="text-preset-5-bold text-grey-500" htmlFor={id}>
@@ -9,7 +9,7 @@ const TextInput = ({ id, labelTitle, children, ...props }) => {
       <div className="relative">
         <input
           id={id}
-          className="text-preset-4-bold block mt-50 peer w-full h-11.25 border border-beige-500 rounded-md pt-150 pb-150 pl-250 pr-250"
+          className={`${isValid === false ? "outline-red border-red" : "outline-grey-900 border-beige-500 "} text-preset-4-bold block mt-50 peer w-full h-11.25 border rounded-md pt-150 pb-150 pl-250 pr-250`}
           {...props}
         />
         {/* If children is undefined, null, or false, render nothing, which is the intentional behavior in this component. */}

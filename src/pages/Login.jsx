@@ -1,3 +1,4 @@
+import useField from "../hooks/useField";
 import TextInput from "../components/TextInput";
 import PasswordInput from "../components/PasswordInput";
 import AuthForm from "../components/AuthForm";
@@ -12,12 +13,23 @@ const formFooterConfig = {
   actionText: "Sign Up",
 };
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+  const email = useField();
+  const password = useField();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // TODO: Sending form data to backend to verify and login.
+    console.log(email.value, password.value);
+    setIsLoggedIn(true);
+  };
+
   return (
     <AuthForm
       formTitle="Login"
       submitButtonConfig={submitButtonConfig}
       formFooterConfig={formFooterConfig}
+      onSubmit={onSubmit}
     >
       <TextInput
         id="login-email"
@@ -25,8 +37,9 @@ const Login = () => {
         type="email"
         name="email"
         placeholder="Enter your email"
-        autoComplete="email"
+        autoComplete="username"
         required={true}
+        {...email}
       />
       <PasswordInput
         id="login-password"
@@ -36,6 +49,7 @@ const Login = () => {
         placeholder="Enter your password"
         autoComplete="current-password"
         required={true}
+        {...password}
       />
     </AuthForm>
   );

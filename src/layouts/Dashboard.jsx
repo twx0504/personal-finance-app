@@ -1,7 +1,9 @@
 import { Navigate, Outlet } from "react-router";
 
-const Dashboard = ({ user }) => {
-  if (!user) return <Navigate to="/login" />;
+const Dashboard = ({ isLoggedIn }) => {
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div>
       <p>Dashboard</p>

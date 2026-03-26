@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import { Routes, Route } from "react-router";
 import Auth from "./layouts/Auth.jsx";
 import Dashboard from "./layouts/Dashboard";
@@ -18,14 +19,15 @@ import Pots from "./pages/Pots";
 
 function App() {
   // Temporary variable to test the routes.
-  const user = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Routes>
-      <Route element={<Auth user={user} />}>
-        <Route path="login" element={<Login />} />
+      <Route element={<Auth isLoggedIn={isLoggedIn} />}>
+        <Route path="login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="register" element={<Register />} />
       </Route>
-      <Route element={<Dashboard user={user} />}>
+      <Route element={<Dashboard isLoggedIn={isLoggedIn} />}>
         <Route path="/" element={<Overview />}></Route>
         <Route path="transaction" element={<Transaction />}></Route>
         <Route path="budgets" element={<Budgets />}></Route>
