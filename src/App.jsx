@@ -1,15 +1,14 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
 import Auth from "./layouts/Auth.jsx";
-import Dashboard from "./layouts/Dashboard.jsx";
-
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Overview from "./pages/Overview.jsx";
-import Budgets from "./pages/Budgets.jsx";
-import Transaction from "./pages/Transaction.jsx";
-import Bills from "./pages/Bills.jsx";
-import Pots from "./pages/Pots.jsx";
+import Dashboard from "./layouts/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Overview from "./pages/Overview";
+import Budgets from "./pages/Budgets";
+import Transaction from "./pages/Transaction";
+import Bills from "./pages/Bills";
+import Pots from "./pages/Pots";
 
 // ProtectedRoute checks isLogin state: Decide which layout to render: Auth or Dashboard - each has outlet to render the Page.
 // - Navigate to Login if isLogin === false. Since the path is "/login", login page is rendered.

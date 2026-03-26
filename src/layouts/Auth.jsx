@@ -7,16 +7,16 @@ const Auth = ({ user }) => {
     return <Navigate to="/" />;
   }
   return (
-    <div className="h-screen xl:flex xl:items-center max-w-360 m-auto">
-      <header className="xl:hidden bg-grey-900 m-auto h-17.5 flex justify-center items-center rounded-b-lg">
+    <div className="max-w-360 h-screen m-auto flex flex-col xl:flex-row xl:items-center">
+      <header className="bg-grey-900 h-17.5 flex justify-center items-center rounded-b-lg xl:hidden">
         <div>
           <Logo />
         </div>
       </header>
-      <aside className="hidden xl:block m-250">
+      <aside className="hidden xl:flex xl:justify-center xl:m-250 xl:flex-1 ">
         <Hero />
       </aside>
-      <main className="h-[calc(100vh-4.375rem)] pt-300 flex justify-center items-center xl:grow xl:h-screen">
+      <main className="flex-1 flex justify-center items-center xl:h-screen">
         <Outlet />
       </main>
     </div>

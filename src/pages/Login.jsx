@@ -1,65 +1,43 @@
-import { Link } from "react-router";
-import eyeIcon from "../assets/images/icon-show-password.svg";
+import TextInput from "../components/TextInput";
+import PasswordInput from "../components/PasswordInput";
+import AuthForm from "../components/AuthForm";
+
+const submitButtonConfig = {
+  buttonName: "Login",
+};
+
+const formFooterConfig = {
+  description: "Need to create an account?",
+  to: "/register",
+  actionText: "Sign Up",
+};
+
 const Login = () => {
   return (
-    <form className="bg-white p-400 m-200 mt-0 md:w-140 rounded-lg">
-      <h1 className="text-preset-1 mb-400">Login</h1>
-      <div className="mb-200">
-        <label
-          className="text-preset-5-bold text-grey-500"
-          htmlFor="login-email"
-        >
-          Email
-        </label>
-        <input
-          id="login-email"
-          className="text-preset-4 block mt-50 peer w-full h-11.25 border border-beige-500 rounded-md pt-150 pb-150 pl-250 pr-250"
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          autoComplete="email"
-        />
-      </div>
-      <div className="mb-400">
-        <label
-          className="text-preset-5-bold text-grey-500"
-          htmlFor="login-password"
-        >
-          Password
-        </label>
-        <div className="relative">
-          <input
-            id="login-password"
-            className="text-preset-4 block mt-50 peer w-full h-11.25 border border-beige-500 rounded-md pt-150 pb-150 pl-250 pr-500"
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            autoComplete="current-password"
-          />
-          <button
-            type="button"
-            className="w-200 h-200 absolute right-200 top-[50%] -translate-y-1/2 cursor-pointer"
-            aria-label="Show password"
-          >
-            <img className="w-200 h-200" src={eyeIcon} alt="" />
-          </button>
-        </div>
-      </div>
-      <button className="text-preset-4 block w-full mb-400 bg-grey-900 text-white h-13.25 rounded-md cursor-pointer">
-        Login
-      </button>
-      <p className="text-preset-4 text-center text-grey-500">
-        <span className="pr-100">Need to create an account?</span>
-        <Link
-          className="inline-block text-preset-4-bold text-grey-900 underline"
-          to="/register"
-        >
-          Sign up
-        </Link>
-      </p>
-    </form>
+    <AuthForm
+      formTitle="Login"
+      submitButtonConfig={submitButtonConfig}
+      formFooterConfig={formFooterConfig}
+    >
+      <TextInput
+        id="login-email"
+        labelTitle="Email"
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        autoComplete="email"
+        required={true}
+      />
+      <PasswordInput
+        id="login-password"
+        labelTitle="Password"
+        type="password"
+        name="password"
+        placeholder="Enter your password"
+        autoComplete="current-password"
+        required={true}
+      />
+    </AuthForm>
   );
 };
 
