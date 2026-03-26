@@ -1,20 +1,19 @@
 import { useState } from "react";
 
-const useField = (validate) => {
+const useField = (onChange) => {
   const [value, setValue] = useState("");
-  const [isValid, setIsValid] = useState(true);
 
   const handleChange = (e) => {
-    const val = e.target.value;
+    const val = e.target.value.trim();
     setValue(val);
-    if (typeof validate === "function") {
-      setIsValid(validate(val));
+    
+    if (typeof onChange === "function") {
+      onChange(val);
     }
   };
 
   return {
     value,
-    isValid,
     onChange: handleChange,
   };
 };

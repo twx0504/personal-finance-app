@@ -1,4 +1,14 @@
+const getBorderColor = (isValid) => {
+  if (isValid === null) {
+    return "outline-grey-900 border-beige-500";
+  }
+
+  return isValid ? "outline-green border-green" : "outline-red border-red";
+};
+
 const TextInput = ({ id, labelTitle, children, isValid, ...props }) => {
+  const borderColor = getBorderColor(isValid);
+
   return (
     <>
       <label className="text-preset-5-bold text-grey-500" htmlFor={id}>
@@ -9,7 +19,7 @@ const TextInput = ({ id, labelTitle, children, isValid, ...props }) => {
       <div className="relative">
         <input
           id={id}
-          className={`${isValid === false ? "outline-red border-red" : "outline-grey-900 border-beige-500 "} text-preset-4-bold block mt-50 peer w-full h-11.25 border rounded-md pt-150 pb-150 pl-250 pr-250`}
+          className={`${borderColor} text-preset-4-bold block mt-50 peer w-full h-11.25 border rounded-md pt-150 pb-150 pl-250 pr-250`}
           {...props}
         />
         {/* If children is undefined, null, or false, render nothing, which is the intentional behavior in this component. */}

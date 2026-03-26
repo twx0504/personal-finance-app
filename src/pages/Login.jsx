@@ -1,4 +1,5 @@
 import useField from "../hooks/useField";
+import useValidation from "../hooks/useValidation";
 import TextInput from "../components/TextInput";
 import PasswordInput from "../components/PasswordInput";
 import AuthForm from "../components/AuthForm";
@@ -13,14 +14,31 @@ const formFooterConfig = {
   actionText: "Sign Up",
 };
 
+const isNotEmpty = (val) => {
+  return val.trim().length > 0;
+};
+
 const Login = ({ setIsLoggedIn }) => {
-  const email = useField();
-  const password = useField();
+  const emailValidation = useValidation();
+  const passwordValidation = useValidation();
+
+  const email = useField(emailValidation.reset);
+  const password = useField(passwordValidation.reset);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    // For login, we only check for non-empty field.
+    // The authentication will be handled by backend to give access to the app.
+    const isEmailValid = emailValidation.validate(email.value, isNotEmpty);
+    const isPasswordValid = passwordValidation.validate(
+      password.value,
+      isNotEmpty,
+    );
+
+    if (!isEmailValid || !isPasswordValid) return;
+
     // TODO: Sending form data to backend to verify and login.
-    console.log(email.value, password.value);
     setIsLoggedIn(true);
   };
 
@@ -38,8 +56,8 @@ const Login = ({ setIsLoggedIn }) => {
         name="email"
         placeholder="Enter your email"
         autoComplete="username"
-        required={true}
         {...email}
+        isValid={emailValidation.isValid}
       />
       <PasswordInput
         id="login-password"
@@ -48,8 +66,8 @@ const Login = ({ setIsLoggedIn }) => {
         name="password"
         placeholder="Enter your password"
         autoComplete="current-password"
-        required={true}
         {...password}
+        isValid={passwordValidation.isValid}
       />
     </AuthForm>
   );

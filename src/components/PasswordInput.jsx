@@ -2,21 +2,37 @@ import { useState } from "react";
 import InputField from "./TextInput";
 import eyeIcon from "../assets/images/icon-show-password.svg";
 
-const PasswordInput = ({ type, helperText, ...props }) => {
-  const [canShow, setCanShow] = useState(false);
+const getHelperTextColor = (isValid) => {
+  if (isValid === null) {
+    return "text-grey-500";
+  }
+
+  return isValid ? "text-green" : "text-red";
+};
+
+const PasswordInput = ({ type, helperText, isValid, ...props }) => {
+  const [showPassword, setShowPassword] = useState(false);
 
   const handlePasswordDisplay = () => {
-    setCanShow(!canShow);
+    setShowPassword(!showPassword);
   };
+
+  const helperTextColor = getHelperTextColor(isValid);
 
   return (
     /* Wrapper needed to compensate for absolutely positioned children (helper text, eye button) 
    that are taken out of normal flow. Extra bottom padding adjusts based on whether 
    helperText is present, since it adds additional visual height below the input. */
     <div className={helperText ? "pb-400" : "pb-200"}>
-      <InputField {...props} type={canShow ? "text" : type}>
+      <InputField
+        {...props}
+        isValid={isValid}
+        type={showPassword ? "text" : type}
+      >
         {helperText && (
-          <p className="absolute right-0 text-preset-5 mt-50 text-grey-500">
+          <p
+            className={`${helperTextColor} absolute right-0 text-preset-5 mt-50`}
+          >
             {helperText}
           </p>
         )}
