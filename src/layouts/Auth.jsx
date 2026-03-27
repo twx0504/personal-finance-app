@@ -2,15 +2,10 @@ import Logo from "../components/Logo";
 import Hero from "../components/Hero";
 import { Navigate, Outlet } from "react-router";
 
-// TODO: feat/auth
-// 1. SuccessModal
-// 2. Field Validation Color - untouched (original color), true (green), false (red)
-// 3. Error Message - Password must be > 8 characters. Invalid email format. etc.
-// 4. Loading State for button submitting
-
 const Auth = ({ isLoggedIn }) => {
   if (isLoggedIn) {
-    return <Navigate to="/" />;
+    // Redirect to loading page once successfully login
+    return <Navigate to="/loading" />;
   }
 
   return (

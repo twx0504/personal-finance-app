@@ -5,9 +5,9 @@ const useValidation = () => {
   const [isValid, setIsValid] = useState(null);
 
   const validate = (value, validateFn) => {
-    const bool = validateFn(value);
-    setIsValid(bool);
-    return bool;
+    const result = validateFn(value);
+    setIsValid(result);
+    return result;
   };
 
   const reset = () => {

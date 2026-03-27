@@ -10,6 +10,7 @@ import Budgets from "./pages/Budgets";
 import Transaction from "./pages/Transaction";
 import Bills from "./pages/Bills";
 import Pots from "./pages/Pots";
+import Loading from "./pages/Loading.jsx";
 
 // ProtectedRoute checks isLogin state: Decide which layout to render: Auth or Dashboard - each has outlet to render the Page.
 // - Navigate to Login if isLogin === false. Since the path is "/login", login page is rendered.
@@ -33,6 +34,7 @@ function App() {
         <Route path="budgets" element={<Budgets />}></Route>
         <Route path="pots" element={<Pots />}></Route>
         <Route path="bills" element={<Bills />}></Route>
+        <Route path="loading" element={<Loading />}></Route>
       </Route>
     </Routes>
   );

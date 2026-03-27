@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from "react-router";
+import Loading from "../pages/Loading";
 
 const Dashboard = ({ isLoggedIn }) => {
   if (!isLoggedIn) {

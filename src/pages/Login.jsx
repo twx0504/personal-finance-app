@@ -1,11 +1,15 @@
+import { useState } from "react";
 import useField from "../hooks/useField";
 import useValidation from "../hooks/useValidation";
 import TextInput from "../components/TextInput";
 import PasswordInput from "../components/PasswordInput";
 import AuthForm from "../components/AuthForm";
+import FormWrapper from "../components/FormWrapper";
 
-const submitButtonConfig = {
+const formButtonConfig = {
   buttonName: "Login",
+  loadingName: "Logging In...",
+  type: "submit",
 };
 
 const formFooterConfig = {
@@ -25,6 +29,8 @@ const Login = ({ setIsLoggedIn }) => {
   const email = useField(emailValidation.reset);
   const password = useField(passwordValidation.reset);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -37,39 +43,44 @@ const Login = ({ setIsLoggedIn }) => {
     );
 
     if (!isEmailValid || !isPasswordValid) return;
-
+    setIsLoading(true);
     // TODO: Sending form data to backend to verify and login.
-    setIsLoggedIn(true);
+    setTimeout(() => {
+      setIsLoggedIn(true);
+    }, 1000);
   };
 
   return (
-    <AuthForm
-      formTitle="Login"
-      submitButtonConfig={submitButtonConfig}
-      formFooterConfig={formFooterConfig}
-      onSubmit={onSubmit}
-    >
-      <TextInput
-        id="login-email"
-        labelTitle="Email"
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        autoComplete="username"
-        {...email}
-        isValid={emailValidation.isValid}
-      />
-      <PasswordInput
-        id="login-password"
-        labelTitle="Password"
-        type="password"
-        name="password"
-        placeholder="Enter your password"
-        autoComplete="current-password"
-        {...password}
-        isValid={passwordValidation.isValid}
-      />
-    </AuthForm>
+    <FormWrapper>
+      <AuthForm
+        formTitle="Login"
+        formButtonConfig={formButtonConfig}
+        formFooterConfig={formFooterConfig}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+      >
+        <TextInput
+          id="login-email"
+          labelTitle="Email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          autoComplete="username"
+          {...email}
+          isValid={emailValidation.isValid}
+        />
+        <PasswordInput
+          id="login-password"
+          labelTitle="Password"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          autoComplete="current-password"
+          {...password}
+          isValid={passwordValidation.isValid}
+        />
+      </AuthForm>
+    </FormWrapper>
   );
 };
 

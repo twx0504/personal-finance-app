@@ -1,21 +1,19 @@
-import SubmitButton from "../components/SubmitButton";
+import FormButton from "./FormButton";
 import FormFooter from "../components/FormFooter";
 const AuthForm = ({
   onSubmit,
   formTitle,
   children,
-  submitButtonConfig,
+  formButtonConfig,
   formFooterConfig,
+  isLoading,
 }) => {
   return (
-    <form
-      className="w-9/10 bg-white pl-250 pr-250 pt-300 pb-300 m-200 mt-0 md:w-140 rounded-lg space-y-200"
-      onSubmit={onSubmit}
-    >
+    <form className="m-200 space-y-200" onSubmit={onSubmit}>
       <h1 className="text-preset-1 mb-400">{formTitle}</h1>
       {/* Children is supposed to be input element / components */}
       {children}
-      <SubmitButton {...submitButtonConfig} />
+      <FormButton {...formButtonConfig} isLoading={isLoading} />
       <FormFooter {...formFooterConfig} />
     </form>
   );
