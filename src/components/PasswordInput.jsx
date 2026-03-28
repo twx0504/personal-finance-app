@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputField from "./TextInput";
-import eyeIcon from "../assets/images/icon-show-password.svg";
+import showIcon from "../assets/images/icon-show-password.svg";
+import hideIcon from "../assets/images/icon-hide-password.svg";
 
 const getHelperTextColor = (isValid) => {
   if (isValid === null) {
@@ -38,11 +39,16 @@ const PasswordInput = ({ type, helperText, isValid, ...props }) => {
         )}
         <button
           type="button"
-          className="w-200 h-200 absolute right-200 top-1/2 -translate-y-1/2 cursor-pointer"
-          aria-label="Show password"
+          className="flex justify-center items-center w-300 h-300 absolute right-200 top-1/2 -translate-y-1/2 cursor-pointer"
+          aria-label={showPassword ? "Hide password" : "Show Password"}
           onClick={handlePasswordDisplay}
         >
-          <img className="w-200 h-200" src={eyeIcon} alt="" />
+          <img
+            className="w-200 h-200"
+            /* Eye button shows the act */
+            src={showPassword ? hideIcon : showIcon}
+            alt=""
+          />
         </button>
       </InputField>
     </div>
