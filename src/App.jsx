@@ -20,7 +20,9 @@ import Loading from "./pages/Loading.jsx";
 
 function App() {
   // Temporary variable to test the routes.
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // TODO: I am developing the dashboard page. Remember to change it back to false once finished.
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <Routes>
@@ -30,7 +32,7 @@ function App() {
       </Route>
       <Route element={<Dashboard isLoggedIn={isLoggedIn} />}>
         <Route path="/" element={<Overview />}></Route>
-        <Route path="transaction" element={<Transaction />}></Route>
+        <Route path="transactions" element={<Transaction />}></Route>
         <Route path="budgets" element={<Budgets />}></Route>
         <Route path="pots" element={<Pots />}></Route>
         <Route path="bills" element={<Bills />}></Route>

@@ -4,8 +4,8 @@ import { Navigate, Outlet } from "react-router";
 
 const Auth = ({ isLoggedIn }) => {
   if (isLoggedIn) {
-    // Redirect to loading page once successfully login
-    return <Navigate to="/loading" />;
+    // TODO: Later, redirect to loading page once successfully login
+    return <Navigate to="/" />;
   }
 
   return (
