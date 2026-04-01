@@ -1,4 +1,4 @@
-import { drawDonut } from "../utils/drawDonut";
+import { drawDonut } from "../../utils/drawDonut";
 import { useRef, useEffect } from "react";
 
 const DonutChart = ({

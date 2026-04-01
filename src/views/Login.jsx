@@ -1,10 +1,10 @@
 import { useState } from "react";
 import useField from "../hooks/useField";
 import useValidation from "../hooks/useValidation";
-import TextInput from "../components/TextInput";
-import PasswordInput from "../components/PasswordInput";
-import AuthForm from "../components/AuthForm";
-import FormWrapper from "../components/FormWrapper";
+import TextInput from "../components/ui/TextInput";
+import PasswordInput from "../components/auth/PasswordInput";
+import AuthForm from "../components/auth/AuthForm";
+import FormWrapper from "../components/ui/FormWrapper";
 
 const formButtonConfig = {
   buttonName: "Login",

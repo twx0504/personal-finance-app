@@ -1,9 +1,9 @@
-import BalanceSummary from "../components/BalanceSummary";
-import BudgetsCard from "../components/BudgetsCard";
-import OverviewSection from "../components/OverviewSection";
-import PotsCard from "../components/PotsCard";
-import RecurringBillsCard from "../components/RecurringBillsCard";
-import TransactionList from "../components/TransactionList";
+import BalanceSummary from "../components/features/balances/BalanceSummary";
+import BudgetsCard from "../components/features/budgets/BudgetsCard";
+import OverviewSection from "../components/features/overview/OverviewSection";
+import PotsCard from "../components/features/pots/PotsCard";
+import RecurringBillsCard from "../components/features/bills/RecurringBillsCard";
+import TransactionList from "../components/features/transactions/TransactionList";
 
 const Overview = () => {
   return (

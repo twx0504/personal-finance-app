@@ -1,5 +1,5 @@
-import Logo from "../components/Logo";
-import Hero from "../components/Hero";
+import Logo from "../components/ui/Logo";
+import Hero from "../components/ui/Hero";
 import { Navigate, Outlet } from "react-router";
 
 const Auth = ({ isLoggedIn }) => {

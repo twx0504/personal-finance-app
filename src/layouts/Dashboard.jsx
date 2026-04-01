@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router";
-import DashboardContent from "../components/DashboardContent";
+import DashboardContent from "./DashboardContent";
 
 const titleMap = {
   "": "Overview",

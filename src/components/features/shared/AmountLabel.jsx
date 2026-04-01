@@ -1,4 +1,4 @@
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../../utils/money";
 
 const AmountLabel = ({ className = "", amount = 0 }) => {
   const hasSign = amount.toString().includes("-");

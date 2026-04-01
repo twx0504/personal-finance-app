@@ -1,8 +1,8 @@
-import Logo from "./Logo";
-import authIllustration from "../assets/images/illustration-authentication.svg";
+import Logo from "../ui/Logo";
+import authIllustration from "../../assets/images/illustration-authentication.svg";
+
 const Hero = () => {
   return (
-    /* Add background image */
     <div
       className="relative bg-grey-900 w-140 h-[calc(100vh-var(--spacing-400))] p-500 rounded-lg bg-no-repeat min-h-192  max-h-240"
       style={{

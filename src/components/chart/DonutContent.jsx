@@ -1,4 +1,4 @@
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 
 const DonutContent = ({ totalSpent, totalMax }) => {
   return (

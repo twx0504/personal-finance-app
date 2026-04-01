@@ -1,5 +1,3 @@
-// TODO: Handle svg image
-
 const IconWrapper = ({
   viewBox = "0 0 20 20",
   width = 20,

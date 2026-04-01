@@ -1,6 +1,6 @@
-import Logo from "./Logo";
+import Logo from "../components/ui/Logo";
 import { Link } from "react-router";
-import NavLists from "./NavLists";
+import NavList from "./NavList";
 import MinimizedButton from "./MinimizedButton";
 const SideBar = () => {
   return (
@@ -8,7 +8,7 @@ const SideBar = () => {
       <Link to="/" className="sidebar-logo-wrapper">
         <Logo />
       </Link>
-      <NavLists
+      <NavList
         containerClass="sidebar"
         listClass="sidebar-list"
         itemClass="sidebar-item"

@@ -1,5 +1,5 @@
 import FormButton from "./FormButton";
-import FormFooter from "../components/FormFooter";
+import FormFooter from "./FormFooter";
 const AuthForm = ({
   onSubmit,
   formTitle,

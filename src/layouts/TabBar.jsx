@@ -1,9 +1,9 @@
-import NavLists from "./NavLists";
+import NavList from "./NavList";
 
 const TabBar = () => {
   return (
     <footer className="tabbar-container">
-      <NavLists
+      <NavList
         containerClass="tabbar"
         listClass="tabbar-list"
         itemClass="tabbar-item"

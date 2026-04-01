@@ -1,4 +1,4 @@
-import potIcon from "../assets/images/icon-pot.svg";
+import potIcon from "../../../assets/images/icon-pot.svg";
 const PotsTotal = () => {
   return (
     <div className="flex items-center bg-beige-100 p-200 rounded-xl mb-250 md:w-[39.6%] md:mb-0">

@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import useFinanceContext from "../hooks/useFinanceContext";
-import DonutChart from "./DonutChart";
-import DonutContent from "./DonutContent";
-import BarLabel from "./BarLabel";
-import { formatMoney } from "../utils/money";
+import useFinanceContext from "../../../hooks/useFinanceContext";
+import DonutChart from "../../chart/DonutChart";
+import DonutContent from "../../chart/DonutContent";
+import BarLabel from "../shared/BarLabel";
+import { formatMoney } from "../../../utils/money";
 
 const BudgetsCard = () => {
   const { transactions, budgets } = useFinanceContext();

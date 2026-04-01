@@ -3,12 +3,12 @@ import { useNavigate } from "react-router";
 import useField from "../hooks/useField";
 import useValidation from "../hooks/useValidation";
 import useModal from "../hooks/useModal";
-import TextInput from "../components/TextInput";
-import PasswordInput from "../components/PasswordInput";
-import AuthForm from "../components/AuthForm";
-import FormWrapper from "../components/FormWrapper";
-import Modal from "../components/Modal";
-import FormButton from "../components/FormButton";
+import TextInput from "../components/ui/TextInput";
+import PasswordInput from "../components/auth/PasswordInput";
+import AuthForm from "../components/auth/AuthForm";
+import FormWrapper from "../components/ui/FormWrapper";
+import Modal from "../components/ui/Modal";
+import FormButton from "../components/auth/FormButton";
 import modalLogo from "../assets/images/icon-close-modal.svg";
 
 const MIN_PASSWORD_LENGTH = 8;

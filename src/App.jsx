@@ -3,15 +3,15 @@ import { useState } from "react";
 import { Routes, Route } from "react-router";
 import Auth from "./layouts/Auth.jsx";
 import Dashboard from "./layouts/Dashboard";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Overview from "./pages/Overview";
-import Budgets from "./pages/Budgets";
-import Transaction from "./pages/Transaction";
-import Bills from "./pages/Bills";
-import Pots from "./pages/Pots";
-import Loading from "./pages/Loading.jsx";
-import FinanceProvider from "./components/FinanceProvider.jsx";
+import Login from "./views/Login";
+import Register from "./views/Register";
+import Overview from "./views/Overview";
+import Budgets from "./views/Budgets";
+import Transaction from "./views/Transaction";
+import Bills from "./views/Bills";
+import Pots from "./views/Pots";
+import Loading from "./views/Loading.jsx";
+import FinanceProvider from "./contexts/FinanceProvider.jsx";
 
 // ProtectedRoute checks isLogin state: Decide which layout to render: Auth or Dashboard - each has outlet to render the Page.
 // - Navigate to Login if isLogin === false. Since the path is "/login", login page is rendered.

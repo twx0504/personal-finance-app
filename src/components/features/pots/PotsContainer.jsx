@@ -1,6 +1,6 @@
-import BarLabel from "./BarLabel";
-import useFinanceContext from "../hooks/useFinanceContext";
-import { formatMoney } from "../utils/money";
+import BarLabel from "../shared/BarLabel";
+import useFinanceContext from "../../../hooks/useFinanceContext";
+import { formatMoney } from "../../../utils/money";
 const MAX_SHOWN_POTS = 4;
 
 const PotsContainer = () => {

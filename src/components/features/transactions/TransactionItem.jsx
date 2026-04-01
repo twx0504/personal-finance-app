@@ -1,5 +1,5 @@
-import AmountLabel from "./AmountLabel";
-import { formatDate } from "../utils/date";
+import AmountLabel from "../shared/AmountLabel";
+import { formatDate } from "../../../utils/date";
 const TransactionItem = ({ amount, avatar, date, name }) => {
   return (
     <li className="border-b border-b-grey-100 last:border-b-0">

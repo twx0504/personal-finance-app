@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import rightCaretIcon from "../assets/images/icon-caret-right.svg";
+import rightCaretIcon from "../../../assets/images/icon-caret-right.svg";
 
 const SectionHeader = ({ title, link, linkDescription, headerClassName  }) => {
   return (

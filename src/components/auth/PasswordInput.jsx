@@ -1,7 +1,7 @@
 import { useState } from "react";
-import InputField from "./TextInput";
-import showIcon from "../assets/images/icon-show-password.svg";
-import hideIcon from "../assets/images/icon-hide-password.svg";
+import InputField from "../ui/TextInput";
+import showIcon from "../../assets/images/icon-show-password.svg";
+import hideIcon from "../../assets/images/icon-hide-password.svg";
 
 const getHelperTextColor = (isValid) => {
   if (isValid === null) {

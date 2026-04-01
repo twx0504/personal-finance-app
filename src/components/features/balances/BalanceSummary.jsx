@@ -1,5 +1,5 @@
-import useFinanceContext from "../hooks/useFinanceContext";
-import { formatMoney } from "../utils/money";
+import useFinanceContext from "../../../hooks/useFinanceContext";
+import { formatMoney } from "../../../utils/money";
 
 const BalanceSummary = () => {
   const { balance } = useFinanceContext();

@@ -1,5 +1,5 @@
 import TransactionItem from "./TransactionItem";
-import useFinanceContext from "../hooks/useFinanceContext";
+import useFinanceContext from "../../../hooks/useFinanceContext";
 const MAX_SHOWN_TRANSACTIONS = 5;
 
 const TransactionList = () => {

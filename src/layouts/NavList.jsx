@@ -5,9 +5,9 @@ import {
   IconBudgets,
   IconPots,
   IconRecurringBills,
-} from "./Icons";
+} from "../components/ui/Icons";
 
-const navItemLists = [
+const navItemsList = [
   {
     Icon: <IconOverview className="active-svg" />,
     title: "Overview",
@@ -35,11 +35,11 @@ const navItemLists = [
   },
 ];
 
-const NavLists = ({ containerClass, listClass, itemClass, linkClass }) => {
+const NavList = ({ containerClass, listClass, itemClass, linkClass }) => {
   return (
     <nav className={`navlist-container ${containerClass}`}>
       <ul className={listClass}>
-        {navItemLists.map(({ Icon, title, to }) => {
+        {navItemsList.map(({ Icon, title, to }) => {
           return (
             <li key={title} className={itemClass}>
               <NavLink className={`navlist-link ${linkClass}`} to={to}>
@@ -56,4 +56,4 @@ const NavLists = ({ containerClass, listClass, itemClass, linkClass }) => {
   );
 };
 
-export default NavLists;
+export default NavList;

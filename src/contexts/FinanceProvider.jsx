@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FinanceContext } from "../context/financeContext";
+import { FinanceContext } from "./FinanceContext";
 import useFetch from "../hooks/useFetch";
 
 const FinanceProvider = ({ children }) => {

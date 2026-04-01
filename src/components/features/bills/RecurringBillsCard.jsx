@@ -1,7 +1,7 @@
 import BillRow from "./BillRow";
-import useFinanceContext from "../hooks/useFinanceContext";
-import useRecurringBills from "../hooks/useRecurringBills";
-import { formatMoney } from "../utils/money";
+import useFinanceContext from "../../../hooks/useFinanceContext";
+import useRecurringBills from "../../../hooks/useRecurringBills";
+import { formatMoney } from "../../../utils/money";
 const RecurringBillsCard = () => {
   const { transactions } = useFinanceContext();
   const { paid, unpaid, dueSoon } = useRecurringBills(transactions);
