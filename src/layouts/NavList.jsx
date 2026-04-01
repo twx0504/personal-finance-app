@@ -35,7 +35,13 @@ const navItemsList = [
   },
 ];
 
-const NavList = ({ containerClass, listClass, itemClass, linkClass }) => {
+const NavList = ({
+  containerClass,
+  listClass,
+  itemClass,
+  linkClass,
+  collapse,
+}) => {
   return (
     <nav className={`navlist-container ${containerClass}`}>
       <ul className={listClass}>
@@ -44,7 +50,9 @@ const NavList = ({ containerClass, listClass, itemClass, linkClass }) => {
             <li key={title} className={itemClass}>
               <NavLink className={`navlist-link ${linkClass}`} to={to}>
                 {Icon}
-                <span className="hidden md:inline-block text-preset-5-bold xl:text-preset-3">
+                <span
+                  className={`hidden md:inline-block text-preset-5-bold xl:text-preset-3 ${collapse ? "xl:hidden" : ""}`}
+                >
                   {title}
                 </span>
               </NavLink>

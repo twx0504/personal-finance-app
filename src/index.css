@@ -134,11 +134,23 @@
 
   /* Desktop Sidebar */
   .sidebar-container {
-    @apply fixed left-0 hidden xl:block w-75 top-0 bottom-0 bg-grey-900;
+    @apply fixed left-0 hidden xl:block  top-0 bottom-0 bg-grey-900;
+  }
+
+  .sidebar-expand {
+    @apply w-75;
+  }
+
+  .sidebar-minimize {
+    @apply w-21.75;
   }
 
   .sidebar-logo-wrapper {
     @apply flex items-center w-fit mt-500 ml-400 mb-500;
+  }
+
+  .sidebar-logo-minimize {
+    @apply w-[40px] h-[40px];
   }
 
   .sidebar {
@@ -150,12 +162,21 @@
   }
 
   .sidebar-item {
-    @apply flex items-center mr-300;
+    @apply flex items-center mr-300 hover:text-grey-100;
+  }
+
+  .sidebar-item-minimize {
+    @apply mr-100;
   }
 
   .sidebar-link {
     @apply flex items-center pl-300 w-full h-14 rounded-tr-lg rounded-br-lg;
   }
+
+  .sidebar-link-minimize {
+    @apply justify-center;
+  }
+
   .sidebar-link svg {
     @apply mr-200;
   }
