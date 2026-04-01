@@ -6,9 +6,9 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url("./assets/fonts/public-sans-v21-latin-regular.woff2") format("woff2"),
+    url("/assets/fonts/public-sans-v21-latin-regular.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-      url("./assets/fonts/public-sans-v21-latin-regular.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("/assets/fonts/public-sans-v21-latin-regular.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
 @font-face {
@@ -17,9 +17,9 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url("./assets/fonts/public-sans-v21-latin-700.woff2") format("woff2"),
+    url("/assets/fonts/public-sans-v21-latin-700.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-      url("./assets/fonts/public-sans-v21-latin-700.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("/assets/fonts/public-sans-v21-latin-700.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
 @theme {
@@ -79,35 +79,6 @@
 }
 
 @layer components {
-  /* Typography */
-  .text-preset-1 {
-    @apply text-3xl font-bold;
-  }
-
-  .text-preset-2 {
-    @apply text-xl font-bold;
-  }
-
-  .text-preset-3 {
-    @apply text-base font-bold;
-  }
-
-  .text-preset-4 {
-    @apply text-sm font-normal;
-  }
-
-  .text-preset-4-bold {
-    @apply text-sm font-bold;
-  }
-
-  .text-preset-5 {
-    @apply text-xs font-normal;
-  }
-
-  .text-preset-5-bold {
-    @apply text-xs font-bold;
-  }
-
   /* NavList */
   .navlist-container {
     @apply bg-grey-900 text-grey-300;
@@ -193,6 +164,50 @@
     content: "";
     @apply absolute left-0 top-0 bottom-0  border-l-4 border-l-green;
   }
+
+  /* BarLabel */
+
+  .bar-label {
+    @apply relative flex flex-col pl-200 w-[calc(50%-16px)];
+  }
+
+  .budget-bar-label {
+    @apply md:w-fit;
+  }
 }
 
 /* Breakpoint: md: tablets, xl: desktop */
+@utility text-preset-5 {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 400; /* font-normal */
+}
+
+@utility text-preset-5-bold {
+  font-size: 0.75rem;
+  font-weight: 700; /* font-bold */
+}
+
+@utility text-preset-4 {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 400;
+}
+
+@utility text-preset-4-bold {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+@utility text-preset-3 {
+  font-size: 1rem; /* text-base */
+  font-weight: 700;
+}
+
+@utility text-preset-2 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+}
+
+@utility text-preset-1 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+}

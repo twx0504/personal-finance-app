@@ -44,7 +44,7 @@ const NavLists = ({ containerClass, listClass, itemClass, linkClass }) => {
             <li key={title} className={itemClass}>
               <NavLink className={`navlist-link ${linkClass}`} to={to}>
                 {Icon}
-                <span className="hidden md:inline-block text-preset-5-bold">
+                <span className="hidden md:inline-block text-preset-5-bold xl:text-preset-3">
                   {title}
                 </span>
               </NavLink>

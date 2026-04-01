@@ -11,6 +11,7 @@ import Transaction from "./pages/Transaction";
 import Bills from "./pages/Bills";
 import Pots from "./pages/Pots";
 import Loading from "./pages/Loading.jsx";
+import FinanceProvider from "./components/FinanceProvider.jsx";
 
 // ProtectedRoute checks isLogin state: Decide which layout to render: Auth or Dashboard - each has outlet to render the Page.
 // - Navigate to Login if isLogin === false. Since the path is "/login", login page is rendered.
@@ -30,7 +31,13 @@ function App() {
         <Route path="login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="register" element={<Register />} />
       </Route>
-      <Route element={<Dashboard isLoggedIn={isLoggedIn} />}>
+      <Route
+        element={
+          <FinanceProvider>
+            <Dashboard isLoggedIn={isLoggedIn} />
+          </FinanceProvider>
+        }
+      >
         <Route path="/" element={<Overview />}></Route>
         <Route path="transactions" element={<Transaction />}></Route>
         <Route path="budgets" element={<Budgets />}></Route>
