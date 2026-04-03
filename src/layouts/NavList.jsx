@@ -9,27 +9,27 @@ import {
 
 const navItemsList = [
   {
-    Icon: <IconOverview className="active-svg" />,
+    Icon: IconOverview,
     title: "Overview",
     to: "/",
   },
   {
-    Icon: <IconTransactions className="active-svg" />,
+    Icon: IconTransactions,
     title: "Transactions",
     to: "transactions",
   },
   {
-    Icon: <IconBudgets className="active-svg" />,
+    Icon: IconBudgets,
     title: "Budgets",
     to: "budgets",
   },
   {
-    Icon: <IconPots className="active-svg" />,
+    Icon: IconPots,
     title: "Pots",
     to: "pots",
   },
   {
-    Icon: <IconRecurringBills className="active-svg" />,
+    Icon: IconRecurringBills,
     title: "Recurring Bills",
     to: "bills",
   },
@@ -40,21 +40,25 @@ const NavList = ({
   listClass,
   itemClass,
   linkClass,
-  collapse,
+  isCollapsed,
 }) => {
   return (
     <nav className={`navlist-container ${containerClass}`}>
       <ul className={listClass}>
         {navItemsList.map(({ Icon, title, to }) => {
+          const IconComponent = Icon;
           return (
             <li key={title} className={itemClass}>
               <NavLink className={`navlist-link ${linkClass}`} to={to}>
-                {Icon}
-                <span
-                  className={`hidden md:inline-block text-preset-5-bold xl:text-preset-3 ${collapse ? "xl:hidden" : ""}`}
-                >
-                  {title}
-                </span>
+                <IconComponent className="active-svg" />
+
+                {!isCollapsed && (
+                  <span
+                    className={`hidden md:inline-block text-preset-5-bold xl:text-preset-3`}
+                  >
+                    {title}
+                  </span>
+                )}
               </NavLink>
             </li>
           );

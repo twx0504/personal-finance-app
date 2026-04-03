@@ -2,24 +2,23 @@ import Logo from "../components/ui/Logo";
 import { Link } from "react-router";
 import NavList from "./NavList";
 import MinimizedButton from "./MinimizedButton";
-
 import bigLogo from "../assets/images/logo-large.svg";
 import smallLogo from "../assets/images/logo-small.svg";
 
-const SideBar = ({ setCollapse, collapse }) => {
+const SideBar = ({ setIsCollapsed, isCollapsed }) => {
   return (
     <aside className="sidebar-container">
       <Link to="/" className="sidebar-logo-wrapper">
-        <Logo logo={collapse ? smallLogo : bigLogo} />
+        <Logo logo={isCollapsed ? smallLogo : bigLogo} />
       </Link>
       <NavList
-        containerClass={`sidebar ${collapse ? "sidebar-minimize" : "sidebar-expand"}`}
+        containerClass={`sidebar ${isCollapsed ? "sidebar-minimize" : "sidebar-expand"}`}
         listClass="sidebar-list"
-        itemClass={`sidebar-item ${collapse ? "sidebar-item-minimize" : ""}`}
-        linkClass={`sidebar-link ${collapse ? "sidebar-link-minimize" : ""}`}
-        collapse={collapse}
+        itemClass={`sidebar-item ${isCollapsed ? "sidebar-item-minimize" : ""}`}
+        linkClass={`sidebar-link ${isCollapsed ? "sidebar-link-minimize" : ""}`}
+        isCollapsed={isCollapsed}
       />
-      <MinimizedButton setCollapse={setCollapse} collapse={collapse} />
+      <MinimizedButton setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed} />
     </aside>
   );
 };

@@ -11,10 +11,11 @@ const titleMap = {
 
 const Dashboard = ({ isLoggedIn }) => {
   const { pathname } = useLocation();
-  const pageName = pathname.split("/")[1];
-  const pageTitle = titleMap[pageName];
+  const routeKey = pathname.split("/")[1] || "";
+  const pageTitle = titleMap[routeKey] || "Overview";
+
   if (!isLoggedIn) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return (
