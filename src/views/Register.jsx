@@ -108,7 +108,8 @@ const Register = () => {
             name="name"
             placeholder="Enter your name"
             autoComplete="name"
-            {...name}
+            value={name.value}
+            onChange={name.onChange}
             isValid={nameValidation.isValid}
           />
           <TextInput
@@ -118,20 +119,24 @@ const Register = () => {
             name="email"
             placeholder="Enter your email"
             autoComplete="username"
-            {...email}
+            value={email.value}
+            onChange={email.onChange}
             isValid={emailValidation.isValid}
           />
-          <PasswordInput
-            helperText="Passwords must be at least 8 characters"
-            id="register-password"
-            type="password"
-            labelTitle="Create Password"
-            name="password"
-            placeholder="Enter your password"
-            autoComplete="new-password"
-            {...password}
-            isValid={passwordValidation.isValid}
-          />
+          <div className="pb-400">
+            <PasswordInput
+              helperText="Passwords must be at least 8 characters"
+              id="register-password"
+              type="password"
+              labelTitle="Create Password"
+              name="password"
+              placeholder="Enter your password"
+              autoComplete="new-password"
+              value={password.value}
+              onChange={password.onChange}
+              isValid={passwordValidation.isValid}
+            />
+          </div>
         </AuthForm>
       </FormWrapper>
       <Modal

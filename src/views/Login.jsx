@@ -66,19 +66,23 @@ const Login = ({ setIsLoggedIn }) => {
           name="email"
           placeholder="Enter your email"
           autoComplete="username"
-          {...email}
+          value={email.value}
+          onChange={email.onChange}
           isValid={emailValidation.isValid}
         />
-        <PasswordInput
-          id="login-password"
-          labelTitle="Password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          autoComplete="current-password"
-          {...password}
-          isValid={passwordValidation.isValid}
-        />
+        <div className="pb-200">
+          <PasswordInput
+            id="login-password"
+            labelTitle="Password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            value={password.value}
+            onChange={password.onChange}
+            isValid={passwordValidation.isValid}
+          />
+        </div>
       </AuthForm>
     </FormWrapper>
   );

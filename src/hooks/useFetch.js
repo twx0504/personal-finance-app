@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const useFetch = (url, config = undefined) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

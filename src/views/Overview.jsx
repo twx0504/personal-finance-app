@@ -1,11 +1,16 @@
+import useFinanceContext from "../hooks/useFinanceContext";
 import BalanceSummary from "../components/features/balances/BalanceSummary";
 import BudgetsCard from "../components/features/budgets/BudgetsCard";
 import OverviewSection from "../components/features/overview/OverviewSection";
 import PotsCard from "../components/features/pots/PotsCard";
 import RecurringBillsCard from "../components/features/bills/RecurringBillsCard";
 import TransactionList from "../components/features/transactions/TransactionList";
+import useTransaction from "../hooks/useTransaction";
 
 const Overview = () => {
+  const { transactions } = useFinanceContext();
+  const { recentTransactions } = useTransaction(transactions);
+
   return (
     <div>
       <BalanceSummary />
@@ -20,7 +25,12 @@ const Overview = () => {
             linkDescription="View All"
             headerClassName="mb-[12px]"
           >
-            <TransactionList />
+            <TransactionList
+              data={recentTransactions}
+              startIndex={0}
+              endIndex={5}
+              variant="overview"
+            />
           </OverviewSection>
         </div>
         <div className="w-full xl:w-[41.3%]">

@@ -1,16 +1,21 @@
 import TransactionItem from "./TransactionItem";
-import useFinanceContext from "../../../hooks/useFinanceContext";
-const MAX_SHOWN_TRANSACTIONS = 5;
 
-const TransactionList = () => {
-  const { transactions } = useFinanceContext();
+const TransactionList = ({ data, variant = "full" }) => {
+  if (data.length === 0) {
+    return <div className="mb-300">No transactions found</div>;
+  }
+
   return (
-    <ul className="space-y-250">
-      {transactions
-        .slice(0, MAX_SHOWN_TRANSACTIONS)
-        .map((transactionItem, index) => (
-          <TransactionItem key={index} {...transactionItem} />
-        ))}
+    <ul className={`${variant === "full" ? "min-h-176.75" : ""} space-y-250`}>
+      {data.map((transactionItem) => {
+        return (
+          <TransactionItem
+            key={transactionItem.id}
+            {...transactionItem}
+            variant={variant}
+          />
+        );
+      })}
     </ul>
   );
 };
