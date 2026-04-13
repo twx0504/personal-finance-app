@@ -72,6 +72,24 @@ const IconMinimize = ({ className }) => (
   </IconWrapper>
 );
 
+const IconCaretLeft = ({ className }) => (
+  <IconWrapper viewBox="0 0 6 11" width={6} height={11} className={className}>
+    <path
+      fill="currentColor"
+      d="m5.147 10.854-5-5a.5.5 0 0 1 0-.708l5-5A.5.5 0 0 1 6 .5v10a.5.5 0 0 1-.853.354z"
+    />
+  </IconWrapper>
+);
+
+const IconCaretRight = ({ className }) => (
+  <IconWrapper viewBox="0 0 6 11" width={6} height={11} className={className}>
+    <path
+      fill="currentColor"
+      d="m.854.146 5 5a.5.5 0 0 1 0 .708l-5 5A.5.5 0 0 1 0 10.5V.5A.5.5 0 0 1 .854.146z"
+    />
+  </IconWrapper>
+);
+
 export {
   IconOverview,
   IconTransactions,
@@ -79,4 +97,6 @@ export {
   IconPots,
   IconRecurringBills,
   IconMinimize,
+  IconCaretLeft,
+  IconCaretRight
 };

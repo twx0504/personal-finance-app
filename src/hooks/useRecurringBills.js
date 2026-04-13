@@ -7,7 +7,6 @@ import {
 } from "../utils/bills";
 
 const useRecurringBills = (transactions) => {
-  // recurringBills
   const recurringBills = useMemo(
     () =>
       transactions
