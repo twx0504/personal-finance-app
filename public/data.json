@@ -1,8 +1,8 @@
 {
   "balance": {
     "current": 483600,
-    "income": 381425,
-    "expenses": 170050
+    "income": 38675,
+    "expenses": 85102
   },
   "transactions": [
     {
@@ -289,13 +289,28 @@
     },
     {
       "category": "Dining Out",
-      "maximum": 7500,
+      "maximum": 20000,
       "theme": "#F2CDAC"
     },
     {
       "category": "Personal Care",
       "maximum": 10000,
       "theme": "#626070"
+    },
+    {
+      "category": "Education",
+      "maximum": 15000,
+      "theme": "#826CB0"
+    },
+    {
+      "category": "Transportation",
+      "maximum": 10000,
+      "theme": "#AF81BA"
+    },
+    {
+      "category": "Groceries",
+      "maximum": 15000,
+      "theme": "#597C7C"
     }
   ],
   "pots": [

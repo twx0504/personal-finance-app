@@ -3,15 +3,12 @@ import { formatDate } from "../../../utils/date";
 
 const TransactionItemOverview = ({ avatar, name, amount, date }) => (
   <div className="flex md:gap-x-400 pb-250">
-    {/* Recipient / Sender */}
     <div className="flex items-center grow">
       <img className="rounded-full w-400" src={avatar} alt="" />
       <span className="ml-200 text-preset-4-bold">{name}</span>
     </div>
     <div className="flex flex-col text-right">
-      {/* Amount */}
       <AmountLabel className="text-preset-4-bold mb-100" amount={amount} />
-      {/* Date */}
       <span className="text-preset-5 text-grey-500">{formatDate(date)}</span>
     </div>
   </div>
@@ -47,7 +44,6 @@ const TransactionItemFull = ({ avatar, name, category, amount, date }) => (
 
 const TransactionItem = ({ variant = "full", ...props }) => {
   const isOverview = variant === "overview";
-
   return (
     <li className={`border-b border-b-grey-100 last:border-b-0`}>
       {isOverview ? (

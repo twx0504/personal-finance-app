@@ -12,7 +12,13 @@ const filterBySearch = (data, search) => {
 const filterByCategory = (data, category) => {
   if (category === CATEGORY_TYPES.ALL) return data;
 
-  return data.filter((item) => item.category.toLowerCase() === category);
+  return data.filter((item) => item.category === category);
+};
+
+const filterBySpendingCategory = (data, category) => {
+  if (category === CATEGORY_TYPES.ALL) return data;
+
+  return data.filter((item) => item.category === category && item.amount < 0);
 };
 
 const sortBy = (data, sortType) => {
@@ -27,4 +33,4 @@ const sortBy = (data, sortType) => {
   return data.toSorted(sortHandlers[sortType]);
 };
 
-export { filterByCategory, filterBySearch, sortBy };
+export { filterByCategory, filterBySearch, filterBySpendingCategory, sortBy };

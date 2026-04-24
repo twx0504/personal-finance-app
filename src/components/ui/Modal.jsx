@@ -1,30 +1,37 @@
-import FormWrapper from "./FormWrapper";
 import { useEffect } from "react";
 
-const Modal = ({ children, modalRef, handleClose }) => {
+const Modal = ({ modalRef, handleClose, showModal, children }) => {
   useEffect(() => {
+    // Prevent background from moving when a modal is opened
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showModal]);
+
+  useEffect(() => {
+    if (!showModal) return;
     const handleKeyDown = (e) => {
       if (e.key !== "Escape") return;
       handleClose();
-      console.log(e.key);
     };
 
     // Add event listener when the modal is opened
-    if (modalRef.current.open) {
-      document.addEventListener("keydown", handleKeyDown);
-    }
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleClose]);
+  }, [showModal, handleClose]);
 
   return (
     <dialog
       ref={modalRef}
-      className={`w-screen h-screen max-w-screen max-h-screen bg-black/50 open:flex open:items-center open:justify-center`}
+      className={`backdrop:bg-black/50 overflow-visible m-auto rounded-lg`}
     >
-      <FormWrapper>{children}</FormWrapper>
+      <div className="w-[90vw] rounded-lg p-200 bg-white  md:w-140">
+        {children}
+      </div>
     </dialog>
   );
 };

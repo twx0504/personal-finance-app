@@ -4,7 +4,6 @@ import useValidation from "../hooks/useValidation";
 import TextInput from "../components/ui/TextInput";
 import PasswordInput from "../components/auth/PasswordInput";
 import AuthForm from "../components/auth/AuthForm";
-import FormWrapper from "../components/ui/FormWrapper";
 
 const formButtonConfig = {
   buttonName: "Login",
@@ -26,8 +25,8 @@ const Login = ({ setIsLoggedIn }) => {
   const emailValidation = useValidation();
   const passwordValidation = useValidation();
 
-  const email = useField(emailValidation.reset);
-  const password = useField(passwordValidation.reset);
+  const email = useField("", emailValidation.reset);
+  const password = useField("", passwordValidation.reset);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -51,7 +50,7 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <FormWrapper>
+    <div className="w-9/10 bg-white p-200  mt-0 md:w-140 rounded-lg">
       <AuthForm
         formTitle="Login"
         formButtonConfig={formButtonConfig}
@@ -84,7 +83,7 @@ const Login = ({ setIsLoggedIn }) => {
           />
         </div>
       </AuthForm>
-    </FormWrapper>
+    </div>
   );
 };
 

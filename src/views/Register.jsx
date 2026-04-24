@@ -6,7 +6,6 @@ import useModal from "../hooks/useModal";
 import TextInput from "../components/ui/TextInput";
 import PasswordInput from "../components/auth/PasswordInput";
 import AuthForm from "../components/auth/AuthForm";
-import FormWrapper from "../components/ui/FormWrapper";
 import Modal from "../components/ui/Modal";
 import FormButton from "../components/auth/FormButton";
 import modalLogo from "../assets/images/icon-close-modal.svg";
@@ -53,11 +52,11 @@ const Register = () => {
   const emailValidation = useValidation();
   const passwordValidation = useValidation();
 
-  const name = useField(nameValidation.reset);
-  const email = useField(emailValidation.reset);
-  const password = useField(passwordValidation.reset);
+  const name = useField("", nameValidation.reset);
+  const email = useField("", emailValidation.reset);
+  const password = useField("", passwordValidation.reset);
 
-  const [showModal, handleOpen, handleClose, modalRef] = useModal();
+  const { showModal, handleOpen, handleClose, modalRef } = useModal();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -93,7 +92,7 @@ const Register = () => {
 
   return (
     <>
-      <FormWrapper>
+      <div className="w-9/10 bg-white p-200  mt-0 md:w-140 rounded-lg">
         <AuthForm
           formTitle="Sign Up"
           formButtonConfig={formButtonConfig}
@@ -138,7 +137,7 @@ const Register = () => {
             />
           </div>
         </AuthForm>
-      </FormWrapper>
+      </div>
       <Modal
         modalRef={modalRef}
         showModal={showModal}

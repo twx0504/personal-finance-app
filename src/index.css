@@ -78,6 +78,13 @@
   --spacing-500: 2.5rem; /* 40px */
 }
 
+@layer base {
+  /* Make sure when the modal is open, the scrollbar space is kept. */
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 @layer components {
   /* NavList */
   .navlist-container {
@@ -100,7 +107,7 @@
   /* Mobile & Tablet Tabbar */
 
   .tabbar-container {
-    @apply fixed bottom-0 left-0 right-0;
+    @apply fixed bottom-0 left-0 right-0 z-999;
     @apply xl:hidden;
   }
 
@@ -134,7 +141,7 @@
 
   /* Desktop Sidebar */
   .sidebar-container {
-    @apply fixed left-0 hidden xl:block  top-0 bottom-0 bg-grey-900;
+    @apply fixed left-0 hidden xl:block top-0 bottom-0 bg-grey-900 z-999;
   }
 
   .sidebar-expand {
@@ -231,4 +238,11 @@
 @utility text-preset-1 {
   font-size: 1.875rem; /* text-3xl */
   font-weight: 700;
+}
+
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

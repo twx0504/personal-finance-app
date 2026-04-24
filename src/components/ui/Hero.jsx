@@ -1,7 +1,7 @@
 import Logo from "../ui/Logo";
 import authIllustration from "../../assets/images/illustration-authentication.svg";
 
-const Hero = () => {
+const Hero = ({logo}) => {
   return (
     <div
       className="relative bg-grey-900 w-140 h-[calc(100vh-var(--spacing-400))] p-500 rounded-lg bg-no-repeat min-h-192  max-h-240"
@@ -10,7 +10,7 @@ const Hero = () => {
       }}
     >
       <div className="absolute top-500 left-500">
-        <Logo />
+        <Logo logo={logo}/>
       </div>
       <div className="absolute w-[calc(100%-2*var(--spacing-500))] text-white bottom-500 left-1/2 -translate-x-1/2">
         <h2 className="text-preset-1 mb-300 drop-shadow-sm">

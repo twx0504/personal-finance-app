@@ -7,13 +7,14 @@ const TextInput = ({
   isValid,
   hideLabel,
   rightElement,
+  leftElement,
   helperText,
   ...props
 }) => {
   const labelClass = hideLabel
     ? "absolute w-[1px] h-[1px] p-0 m-[-1px] whitespace-nowrap overflow-hidden [clip:rect(0,0,0,0)]"
     : "text-preset-5-bold text-grey-500";
-  const inputClass = `${getBorderColor(isValid)} text-preset-4 block mt-50 peer w-full h-11.25 border rounded-md pt-150 pb-150 pl-250 pr-250`;
+  const inputClass = `${getBorderColor(isValid)} text-preset-4 block mt-50 peer w-full h-11.25 border rounded-md pt-150 pb-150 pl-250 pr-250 ${leftElement && "pl-[48px]"}`;
   const helperTextColor = getHelperTextColor(isValid);
   return (
     <>
@@ -31,7 +32,11 @@ const TextInput = ({
           aria-label={!labelTitle ? props.placeholder : undefined}
           {...props}
         />
-        {/* If children is undefined, null, or false, render nothing, which is the intentional behavior in this component. */}
+        {leftElement && (
+          <div className={`absolute left-200 top-1/2 -translate-y-1/2`}>
+            {leftElement}
+          </div>
+        )}
         {rightElement && (
           <div className={`absolute right-200 top-1/2 -translate-y-1/2`}>
             {rightElement}

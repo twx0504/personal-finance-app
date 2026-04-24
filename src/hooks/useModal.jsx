@@ -15,7 +15,7 @@ const useModal = () => {
     modalRef.current.close();
   }, []);
 
-  return [showModal, handleOpen, handleClose, modalRef];
+  return { showModal, handleOpen, handleClose, modalRef };
 };
 
 export default useModal;

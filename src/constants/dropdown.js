@@ -1,4 +1,4 @@
 export const DROPDOWNS = {
   SORT: "sortBy",
-  CATEGORY: "category",
+  CATEGORY: "category"
 };

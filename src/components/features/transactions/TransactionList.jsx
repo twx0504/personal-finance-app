@@ -1,6 +1,6 @@
 import TransactionItem from "./TransactionItem";
 
-const TransactionList = ({ data, variant = "full" }) => {
+const TransactionList = ({ data, variant = "full", query="" }) => {
   if (data.length === 0) {
     return <div className="mb-300">No transactions found</div>;
   }
