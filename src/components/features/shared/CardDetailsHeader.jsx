@@ -5,13 +5,15 @@ import useDropDown from "../../../hooks/useDropDown";
 import { BUDGET_ACTION_OPTIONS } from "../../../constants/dropdownOptions";
 import { ActionOptionList } from "../../ui/DropDownOptionLists";
 
-const BudgetDetailsHeader = ({
+const CardDetailsHeader = ({
+  id,
   theme,
-  category,
+  cardTitle,
+  actionOption,
   handleEditOpen,
   handleDeleteOpen,
 }) => {
-  const action = useDropDown(BUDGET_ACTION_OPTIONS[0].label);
+  const action = useDropDown(actionOption[0].label);
 
   return (
     <header className="flex items-center mb-250">
@@ -22,7 +24,7 @@ const BudgetDetailsHeader = ({
             backgroundColor: theme,
           }}
         ></span>
-        <h2 className="text-preset-2">{category}</h2>
+        <h2 className="text-preset-2">{cardTitle}</h2>
       </div>
       <DropDown
         trigger={
@@ -35,10 +37,10 @@ const BudgetDetailsHeader = ({
         }
         optionList={
           <ActionOptionList
-            data={BUDGET_ACTION_OPTIONS}
+            data={actionOption}
             onSelect={(option) => {
-              if (option === "edit") handleEditOpen(category);
-              if (option === "delete") handleDeleteOpen(category);
+              if (option === "edit") handleEditOpen(id);
+              if (option === "delete") handleDeleteOpen(id);
               action.toggle();
             }}
           />
@@ -50,4 +52,4 @@ const BudgetDetailsHeader = ({
   );
 };
 
-export default BudgetDetailsHeader;
+export default CardDetailsHeader;

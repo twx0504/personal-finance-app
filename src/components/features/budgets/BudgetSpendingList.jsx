@@ -7,8 +7,6 @@ const BudgetSpendingList = ({ latestSpendings, category = "" }) => {
     <section className="p-200 rounded-lg bg-beige-100">
       <div className="flex justify-between items-center mb-250">
         <h2 className="text-preset-3">Latest Spending</h2>
-
-        {/* TODO: Handle navigation to transaction page and shows the transaction item filtered by selectedCategory */}
         <Link
           className="text-preset-4 text-grey-500"
           to={`/transactions${category ? `?category=${encodeURIComponent(category)}&type=spending` : ""}`}

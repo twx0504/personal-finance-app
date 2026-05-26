@@ -6,10 +6,8 @@ import BudgetDetailsCard from "../components/features/budgets/BudgetDetailsCard"
 import useBudgets from "../hooks/useBudgets";
 import useFinanceContext from "../hooks/useFinanceContext";
 import BudgetModal from "../components/features/budgets/BudgetModal";
-import DeleteBudgetModal from "../components/features/budgets/DeleteBudgetModal";
+import DeleteModal from "../components/features/shared/DeleteModal";
 import useModal from "../hooks/useModal";
-
-// TODO: See All Navigation
 
 const Budgets = () => {
   const { transactions, budgets, setBudgets } = useFinanceContext();
@@ -21,33 +19,33 @@ const Budgets = () => {
 
   const usedThemes = budgets.map((budget) => budget.theme);
   const usedCategories = budgets.map((budget) => budget.category);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const selectedBudget = budgets.find((b) => b.category === selectedCategory);
+  const [selectedId, setSelectedId] = useState(null);
+  const selectedBudget = budgets.find((budget) => budget.id === selectedId);
 
   const addModal = useModal();
   const editModal = useModal();
   const deleteModal = useModal();
 
   const handleEditOpen = (category) => {
-    setSelectedCategory(category);
+    setSelectedId(category);
     editModal.handleOpen();
   };
 
   const handleDeleteOpen = (category) => {
-    setSelectedCategory(category);
+    setSelectedId(category);
     deleteModal.handleOpen();
   };
 
   const handleAddCard = (newBudgetItem) => {
-    setBudgets([...budgets, newBudgetItem]);
+    setBudgets([...budgets, { ...newBudgetItem, id: crypto.randomUUID() }]);
     addModal.handleClose();
   };
 
   const handleEditCard = (modifiedBudgetItem) => {
     setBudgets(
       budgets.map((budget) => {
-        if (budget.category === selectedCategory) {
-          return modifiedBudgetItem;
+        if (budget.id === selectedBudget.id) {
+          return { ...modifiedBudgetItem, id: selectedBudget.id };
         }
         return budget;
       }),
@@ -56,9 +54,7 @@ const Budgets = () => {
   };
 
   const handleDeleteCard = () => {
-    setBudgets(
-      budgets.filter((budget) => budget.category !== selectedCategory),
-    );
+    setBudgets(budgets.filter((budget) => budget.id !== selectedBudget.id));
     deleteModal.handleClose();
   };
 
@@ -83,7 +79,7 @@ const Budgets = () => {
         <div className="mt-300 space-y-300 xl:w-[57.36%] xl:mt-0">
           {segmentsData.map((data) => (
             <BudgetDetailsCard
-              key={data.category}
+              key={data.id}
               {...data}
               transactions={transactions}
               handleEditOpen={handleEditOpen}
@@ -100,6 +96,7 @@ const Budgets = () => {
         onSubmit={handleAddCard}
         usedThemes={usedThemes}
         usedCategories={usedCategories}
+        formId="budget-form-add"
         {...addModal}
       />
       <BudgetModal
@@ -107,17 +104,16 @@ const Budgets = () => {
         description="As your budgets change, feel free to update your spending limits."
         buttonName="Save Changes"
         onSubmit={handleEditCard}
-        /* Excluding own category and theme */
-        usedThemes={usedThemes.filter(
-          (t) =>
-            t !== budgets.find((b) => b.category === selectedCategory)?.theme,
+        usedThemes={usedThemes.filter((t) => t !== selectedBudget?.theme)}
+        usedCategories={usedCategories.filter(
+          (c) => c !== selectedBudget?.category,
         )}
-        usedCategories={usedCategories.filter((c) => c !== selectedCategory)}
         selectedBudget={selectedBudget}
+        formId="budget-form-edit"
         {...editModal}
       />
-      <DeleteBudgetModal
-        category={selectedCategory}
+      <DeleteModal
+        title={selectedId}
         description="Are you sure you want to delete this budget? This action cannot be reversed, and all the data inside it will be removed forever."
         onConfirm={handleDeleteCard}
         {...deleteModal}

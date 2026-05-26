@@ -3,7 +3,8 @@ import { useMemo } from "react";
 const useBudgets = (transactions, budgets) => {
   const segmentsData = useMemo(
     () =>
-      budgets.map(({ category, maximum, theme }) => ({
+      budgets.map(({ id, category, maximum, theme }) => ({
+        id,
         category,
         maximum,
         theme,

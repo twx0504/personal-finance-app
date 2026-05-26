@@ -3,6 +3,7 @@ import Modal from "../../ui/Modal";
 import DropDown from "../../ui/DropDown";
 import { DesktopTrigger } from "../../ui/DropDownTriggers";
 import { BasicOptionList, ColorOptionList } from "../../ui/DropDownOptionLists";
+import { validateDecimal, validateNonEmpty, validatePositiveNumber } from "../../../utils/validations";
 import TextInput from "../../ui/TextInput";
 import useDropDown from "../../../hooks/useDropDown";
 import useField from "../../../hooks/useField";
@@ -11,7 +12,7 @@ import modalIcon from "../../../assets/images/icon-close-modal.svg";
 import FormButton from "../../auth/FormButton";
 import {
   BUDGET_CATEGORY_OPTIONS,
-  THEME_OPTIONS,
+  COLOR_OPTIONS,
 } from "../../../constants/dropdownOptions";
 
 const BudgetModal = ({
@@ -26,11 +27,12 @@ const BudgetModal = ({
   usedThemes,
   usedCategories,
   selectedBudget,
+  formId,
 }) => {
   const firstAvailableCategory = BUDGET_CATEGORY_OPTIONS.find(
     (o) => !usedCategories.includes(o.label),
   );
-  const firstAvailableTheme = THEME_OPTIONS.find(
+  const firstAvailableTheme = COLOR_OPTIONS.find(
     (o) => !usedThemes.includes(o.value),
   );
 
@@ -39,12 +41,37 @@ const BudgetModal = ({
   );
 
   const theme = useDropDown(
-    firstAvailableTheme?.label || THEME_OPTIONS[0].label,
+    firstAvailableTheme?.label || COLOR_OPTIONS[0].label,
   );
 
-  const { value, onChange, reset } = useField("0");
+  const maximumSpendInput = useField("");
 
   const maximumSpentValidation = useValidation();
+
+  const handleMaximumSpendChange = (e) => {
+    const amount = e.target.value;
+
+    if (validateNonEmpty(amount) && !validateDecimal(amount)) return;
+    maximumSpendInput.onChange(e);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const isMaximumSpentValid = maximumSpentValidation.validate(
+      maximumSpendInput.value,
+      validatePositiveNumber,
+    );
+
+    if (!isMaximumSpentValid) return;
+
+    onSubmit({
+      category: category.label,
+      maximum: Number(maximumSpendInput.value) * 100,
+      theme: COLOR_OPTIONS.find((option) => option.label === theme.label)
+        ?.value,
+    });
+  };
 
   // When modal opens:
   // - Edit mode (selectedBudget exists): prefill form with current budget data
@@ -54,15 +81,15 @@ const BudgetModal = ({
     if (selectedBudget) {
       category.setLabel(selectedBudget.category);
       theme.setLabel(
-        THEME_OPTIONS.find((t) => t.value === selectedBudget.theme)?.label,
+        COLOR_OPTIONS.find((t) => t.value === selectedBudget.theme)?.label,
       );
-      reset(selectedBudget.maximum / 100);
+      maximumSpendInput.reset(selectedBudget.maximum / 100);
     } else {
       category.setLabel(
         firstAvailableCategory?.label || BUDGET_CATEGORY_OPTIONS[0].label,
       );
-      theme.setLabel(firstAvailableTheme?.label || THEME_OPTIONS[0].label);
-      reset("0");
+      theme.setLabel(firstAvailableTheme?.label || COLOR_OPTIONS[0].label);
+      maximumSpendInput.reset("");
     }
   }, [showModal, selectedBudget]);
 
@@ -71,7 +98,7 @@ const BudgetModal = ({
       <div className="relative space-y-250 p-200">
         <h2 className="text-preset-2 md:text-preset-1">{title}</h2>
         <p className="text-preset-4 text-grey-500">{description}</p>
-        <form className="space-y-200">
+        <form id={formId} className="space-y-200" onSubmit={handleSubmit}>
           {/* Category */}
           <div className="flex flex-col">
             <span className="text-preset-5-bold text-grey-500 mb-50">
@@ -111,8 +138,8 @@ const BudgetModal = ({
               <span className="text-preset-4 text-grey-500 ">RM</span>
             }
             placeholder="e.g., 2000"
-            value={value}
-            onChange={onChange}
+            value={maximumSpendInput.value}
+            onChange={handleMaximumSpendChange}
             isValid={maximumSpentValidation.isValid}
             helperText="Maximum spent value must be > 0."
           />
@@ -133,7 +160,7 @@ const BudgetModal = ({
                     <span
                       className="w-200 h-200 mr-[12px] rounded-full"
                       style={{
-                        backgroundColor: THEME_OPTIONS.find(
+                        backgroundColor: COLOR_OPTIONS.find(
                           (o) => o.label === theme.label,
                         )?.value,
                       }}
@@ -143,10 +170,10 @@ const BudgetModal = ({
               }
               optionList={
                 <ColorOptionList
-                  data={THEME_OPTIONS}
-                  usedThemes={usedThemes}
+                  data={COLOR_OPTIONS}
+                  usedColors={usedThemes}
                   onSelect={(value) => {
-                    const selected = THEME_OPTIONS.find(
+                    const selected = COLOR_OPTIONS.find(
                       (o) => o.value === value,
                     );
                     if (selected) theme.setLabel(selected.label);
@@ -165,25 +192,7 @@ const BudgetModal = ({
         >
           <img src={modalIcon} alt="Close modal" />
         </button>
-        <FormButton
-          buttonName={buttonName}
-          onClick={() => {
-            const isMaximumSpentValid = maximumSpentValidation.validate(
-              value,
-              (v) => Number(v) > 0,
-            );
-
-            if (!isMaximumSpentValid) return;
-            
-            onSubmit({
-              category: category.label,
-              maximum: Number(value) * 100,
-              theme: THEME_OPTIONS.find(
-                (option) => option.label === theme.label,
-              )?.value,
-            });
-          }}
-        />
+        <FormButton buttonName={buttonName} form={formId} />
       </div>
     </Modal>
   );

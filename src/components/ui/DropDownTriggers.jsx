@@ -1,7 +1,5 @@
 import caretDownIcon from "../../assets/images/icon-caret-down.svg";
 
-// TODO: Add a left element to DesktopTrigger
-
 const DesktopTrigger = ({ label, onClick, leftElement, className = "" }) => (
   <button
     className={`${className} pt-[12px] pb-[12px] pl-250 pr-250 border border-grey-500 rounded-lg cursor-pointer`}

@@ -23,7 +23,6 @@ export const CATEGORY_OPTIONS = [
   { label: "Lifestyle", value: CATEGORY_TYPES.LIFESTYLE },
 ];
 
-// TODO: Render these options
 export const BUDGET_CATEGORY_OPTIONS = [
   { label: "Entertainment", value: CATEGORY_TYPES.ENTERTAINMENT },
   { label: "Bills", value: CATEGORY_TYPES.BILLS },
@@ -37,7 +36,7 @@ export const BUDGET_CATEGORY_OPTIONS = [
   { label: "General", value: CATEGORY_TYPES.GENERAL },
 ];
 
-export const THEME_OPTIONS = [
+export const COLOR_OPTIONS = [
   { label: "Green", value: "#277C78" },
   { label: "Yellow", value: "#F2CDAC" },
   { label: "Cyan", value: "#82C9D7" },
@@ -53,7 +52,13 @@ export const THEME_OPTIONS = [
   { label: "Gold", value: "#CAB361" },
   { label: "Orange", value: "#BE6C49" },
 ];
+
 export const BUDGET_ACTION_OPTIONS = [
   { label: "Edit Budget", value: "edit", isDangerous: false },
   { label: "Delete Budget", value: "delete", isDangerous: true },
+];
+
+export const POT_ACTION_OPTIONS = [
+  { label: "Edit Pot", value: "edit", isDangerous: false },
+  { label: "Delete Pot", value: "delete", isDangerous: true },
 ];
