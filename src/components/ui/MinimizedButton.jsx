@@ -1,4 +1,4 @@
-import { IconMinimize } from "../components/ui/Icons";
+import { IconMinimize } from "./Icons";
 
 const MinimizedButton = ({ setIsCollapsed, isCollapsed }) => {
   return (

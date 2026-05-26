@@ -9,41 +9,17 @@ import AuthForm from "../components/auth/AuthForm";
 import Modal from "../components/ui/Modal";
 import FormButton from "../components/auth/FormButton";
 import modalLogo from "../assets/images/icon-close-modal.svg";
+import {
+  validateEmail,
+  validatePassword,
+  validateNonEmpty,
+} from "../utils/validations";
 
-const MIN_PASSWORD_LENGTH = 8;
-
-const formButtonConfig = {
-  buttonName: "Create Account",
-  loadingName: "Creating Account...",
-  type: "submit",
-};
-
-const formFooterConfig = {
-  description: "Already have an account?",
-  to: "/login",
-  actionText: "Login",
-};
-
-const modalConfig = {
-  button: {
-    buttonName: "Login",
-    type: "button",
-  },
-};
-
-const validateName = (name) => {
-  return name.trim().length > 0;
-};
-
-const validateEmail = (email) => {
-  const reg =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return reg.test(email.trim());
-};
-
-const validatePassword = (password) => {
-  return password.trim().length >= MIN_PASSWORD_LENGTH;
-};
+import {
+  formButtonConfig,
+  formFooterConfig,
+  modalConfig,
+} from "../constants/register";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -64,7 +40,7 @@ const Register = () => {
     e.preventDefault();
 
     // For register, we validate the field values' formats before submitting to backend.
-    const isNameValid = nameValidation.validate(name.value, validateName);
+    const isNameValid = nameValidation.validate(name.value, validateNonEmpty);
     const isEmailValid = emailValidation.validate(email.value, validateEmail);
     const isPasswordValid = passwordValidation.validate(
       password.value,
@@ -99,6 +75,7 @@ const Register = () => {
           formFooterConfig={formFooterConfig}
           onSubmit={onSubmit}
           isLoading={isLoading}
+          formId="register-form"
         >
           <TextInput
             id="register-name"

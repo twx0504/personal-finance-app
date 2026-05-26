@@ -4,22 +4,9 @@ import useValidation from "../hooks/useValidation";
 import TextInput from "../components/ui/TextInput";
 import PasswordInput from "../components/auth/PasswordInput";
 import AuthForm from "../components/auth/AuthForm";
+import { formButtonConfig, formFooterConfig } from "../constants/login";
+import { validateNonEmpty } from "../utils/validations";
 
-const formButtonConfig = {
-  buttonName: "Login",
-  loadingName: "Logging In...",
-  type: "submit",
-};
-
-const formFooterConfig = {
-  description: "Need to create an account?",
-  to: "/register",
-  actionText: "Sign Up",
-};
-
-const isNotEmpty = (val) => {
-  return val.trim().length > 0;
-};
 
 const Login = ({ setIsLoggedIn }) => {
   const emailValidation = useValidation();
@@ -35,10 +22,10 @@ const Login = ({ setIsLoggedIn }) => {
 
     // For login, we only check for non-empty field.
     // The authentication will be handled by backend to give access to the app.
-    const isEmailValid = emailValidation.validate(email.value, isNotEmpty);
+    const isEmailValid = emailValidation.validate(email.value, validateNonEmpty);
     const isPasswordValid = passwordValidation.validate(
       password.value,
-      isNotEmpty,
+      validateNonEmpty,
     );
 
     if (!isEmailValid || !isPasswordValid) return;
@@ -57,6 +44,7 @@ const Login = ({ setIsLoggedIn }) => {
         formFooterConfig={formFooterConfig}
         onSubmit={onSubmit}
         isLoading={isLoading}
+        formId="login-form"
       >
         <TextInput
           id="login-email"
