@@ -1,0 +1,1 @@
+export const MAX_POT_NAME_LENGTH = 30;

@@ -7,13 +7,14 @@ const AuthForm = ({
   formButtonConfig,
   formFooterConfig,
   isLoading,
+  formId
 }) => {
   return (
-    <form className="m-200 space-y-200" onSubmit={onSubmit}>
+    <form id={formId} className="m-200 space-y-200" onSubmit={onSubmit}>
       <h1 className="text-preset-1 mb-400">{formTitle}</h1>
       {/* Children is supposed to be input element / components */}
       {children}
-      <FormButton {...formButtonConfig} isLoading={isLoading} />
+      <FormButton form={formId} {...formButtonConfig} isLoading={isLoading} />
       <FormFooter {...formFooterConfig} />
     </form>
   );

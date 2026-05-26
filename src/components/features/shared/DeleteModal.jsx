@@ -1,8 +1,8 @@
 import Modal from "../../ui/Modal";
 import FormButton from "../../auth/FormButton";
 import modalIcon from "../../../assets/images/icon-close-modal.svg";
-const DeleteBudgetModal = ({
-  category,
+const DeleteModal = ({
+  title,
   description,
   modalRef,
   showModal,
@@ -13,7 +13,7 @@ const DeleteBudgetModal = ({
   return (
     <Modal modalRef={modalRef} showModal={showModal} handleClose={handleClose}>
       <div className="relative space-y-250 p-200">
-        <h2 className="text-preset-2 md:text-preset-1">Delete '{category}'</h2>
+        <h2 className="text-preset-2 md:text-preset-1">Delete '{title}'</h2>
         <p className="text-preset-4 text-grey-500">{description}</p>
         <button
           className="absolute right-0 top-0 cursor-pointer"
@@ -37,4 +37,4 @@ const DeleteBudgetModal = ({
   );
 };
 
-export default DeleteBudgetModal;
+export default DeleteModal;

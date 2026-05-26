@@ -9,7 +9,8 @@ const BudgetProgressSection = ({ maximum, progress, spent, free, theme }) => {
         Maximum of <span>{formatMoney(maximum)}</span>
       </p>
       <ProgressBar
-        progress={progress}
+        target={maximum}
+        total={spent}
         theme={theme}
         trackClassName="bg-beige-100 p-50 rounded-md mb-200"
         barClassName="h-[24px] rounded-xs"

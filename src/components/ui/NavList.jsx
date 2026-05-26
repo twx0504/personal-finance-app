@@ -5,7 +5,7 @@ import {
   IconBudgets,
   IconPots,
   IconRecurringBills,
-} from "../components/ui/Icons";
+} from "./Icons";
 
 const navItemsList = [
   {

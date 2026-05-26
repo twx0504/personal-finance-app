@@ -29,7 +29,7 @@ const Modal = ({ modalRef, handleClose, showModal, children }) => {
       ref={modalRef}
       className={`backdrop:bg-black/50 overflow-visible m-auto rounded-lg`}
     >
-      <div className="w-[90vw] rounded-lg p-200 bg-white  md:w-140">
+      <div className="w-[90vw] rounded-lg p-200 bg-white md:w-140">
         {children}
       </div>
     </dialog>

@@ -1,9 +1,9 @@
-import Logo from "../components/ui/Logo";
+import Logo from "./Logo";
 import { Link } from "react-router";
 import NavList from "./NavList";
 import MinimizedButton from "./MinimizedButton";
-import bigLogo from "../assets/images/logo-large.svg";
-import smallLogo from "../assets/images/logo-small.svg";
+import bigLogo from "../../assets/images/logo-large.svg";
+import smallLogo from "../../assets/images/logo-small.svg";
 
 const SideBar = ({ setIsCollapsed, isCollapsed }) => {
   return (
@@ -18,7 +18,10 @@ const SideBar = ({ setIsCollapsed, isCollapsed }) => {
         linkClass={`sidebar-link ${isCollapsed ? "sidebar-link-minimize" : ""}`}
         isCollapsed={isCollapsed}
       />
-      <MinimizedButton setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed} />
+      <MinimizedButton
+        setIsCollapsed={setIsCollapsed}
+        isCollapsed={isCollapsed}
+      />
     </aside>
   );
 };

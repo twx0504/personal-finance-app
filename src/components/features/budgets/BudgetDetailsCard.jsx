@@ -1,8 +1,10 @@
-import BudgetDetailsHeader from "./BudgetDetailsHeader";
+import CardDetailsHeader from "../shared/CardDetailsHeader";
 import BudgetProgressSection from "./BudgetProgressSection";
 import BudgetSpendingList from "./BudgetSpendingList";
+import { BUDGET_ACTION_OPTIONS } from "../../../constants/dropdownOptions";
 
 const BudgetDetailsCard = ({
+  id,
   category,
   maximum,
   spent,
@@ -25,9 +27,11 @@ const BudgetDetailsCard = ({
   return (
     <article className="p-400 bg-white rounded-lg">
       {/* BudgetDetailsHeader */}
-      <BudgetDetailsHeader
+      <CardDetailsHeader
+        id={id}
         theme={theme}
-        category={category}
+        cardTitle={category}
+        actionOption={BUDGET_ACTION_OPTIONS}
         handleEditOpen={handleEditOpen}
         handleDeleteOpen={handleDeleteOpen}
       />
